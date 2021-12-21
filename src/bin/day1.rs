@@ -1,12 +1,9 @@
 use advent_of_code_2021 as aoc;
-use std::path::Path;
 
 fn main() {
-    let filepath = Path::new("data/input_day1.txt");
-    let path = filepath.canonicalize()
-        .expect("Error canonicalizing");
-    if path.exists() {
-        let path_str = path.to_str()
+    let filepath = aoc::get_filepath(1);
+    if filepath.exists() {
+        let path_str = filepath.to_str()
             .expect("Error getting path");
         let file_str = aoc::read_file_to_string(path_str);
         let numbers = aoc::read_string_separate_lines(&file_str);
