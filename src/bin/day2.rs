@@ -16,7 +16,7 @@ fn main() {
     }
 }
 
-fn part1(file_str: &String) -> (i32, i32) {
+fn part1(file_str: &str) -> (i32, i32) {
     let mut forward = 0;
     let mut down = 0;
     for line in file_str.lines() {
@@ -29,7 +29,7 @@ fn part1(file_str: &String) -> (i32, i32) {
     (forward, down)
 }
 
-fn part2(file_str: &String) -> (i32, i32) {
+fn part2(file_str: &str) -> (i32, i32) {
     let mut forward = 0;
     let mut aim = 0;
     let mut down = 0;

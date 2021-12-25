@@ -17,6 +17,10 @@ pub fn read_string_separate_lines(whole_string: &str) -> Vec<&str> {
     whole_string.lines().collect()
 }
 
+pub fn lines(file_str: &str) -> usize {
+    file_str.lines().into_iter().count()
+}
+
 pub mod day2 {
     pub enum Directions {
         Forward(i32),
