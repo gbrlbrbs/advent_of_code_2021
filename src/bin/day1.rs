@@ -3,18 +3,20 @@ use advent_of_code_2021 as aoc;
 fn main() {
     let filepath = aoc::get_filepath(1);
     if filepath.exists() {
-        let path_str = filepath.to_str()
-            .expect("Error getting path");
+        let path_str = filepath.to_str().expect("Error getting path");
         let file_str = aoc::read_file_to_string(path_str);
         let numbers = aoc::read_string_separate_lines(&file_str);
-        let number_vec: Vec<i32> = numbers.into_iter()
-            .map(|num| {
-                num.parse::<i32>().unwrap()
-        }).collect();
+        let number_vec: Vec<i32> = numbers
+            .into_iter()
+            .map(|num| num.parse::<i32>().unwrap())
+            .collect();
         let counter = single_changes(&number_vec);
         let counter_windows = sliding_window(&number_vec, 3);
         println!("There are {} positive changes in depth.", counter);
-        println!("There are {} positive sliding window changes in depth", counter_windows);
+        println!(
+            "There are {} positive sliding window changes in depth",
+            counter_windows
+        );
     } else {
         println!("File does not exist!");
     }

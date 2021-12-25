@@ -5,8 +5,7 @@ use advent_of_code_2021 as aoc;
 fn main() {
     let filepath = aoc::get_filepath(3);
     if filepath.exists() {
-        let path_str = filepath.to_str()
-            .expect("Error converting path to string");
+        let path_str = filepath.to_str().expect("Error converting path to string");
         let file_str = aoc::read_file_to_string(path_str);
         let num_lines = aoc::lines(&file_str);
         let power_pt1 = part1(&file_str, num_lines);
@@ -27,22 +26,26 @@ fn part1(file_str: &str, num_lines: usize) -> u32 {
             }
         }
     }
-    let gamma_str = count_vec.into_iter()
+    let gamma_str = count_vec
+        .into_iter()
         .map(|item| {
-            if item > (num_lines/2).try_into().unwrap() {
+            if item > (num_lines / 2).try_into().unwrap() {
                 return '1';
             } else {
                 return '0';
             }
-        }).fold(String::new(), accumulate_str);
-    let eps_str = gamma_str.chars()
+        })
+        .fold(String::new(), accumulate_str);
+    let eps_str = gamma_str
+        .chars()
         .map(|ch| {
             if ch == '1' {
-                return '0'
+                return '0';
             } else {
                 return '1';
             }
-        }).fold(String::new(), accumulate_str);
+        })
+        .fold(String::new(), accumulate_str);
     let gamma = u32::from_str_radix(&gamma_str, 2).unwrap();
     let eps = u32::from_str_radix(&eps_str, 2).unwrap();
     gamma * eps
